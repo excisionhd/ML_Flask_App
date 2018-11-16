@@ -25,26 +25,23 @@ predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 cam = cv2.VideoCapture(0)
 
 if not cam.isOpened():
-    raise IOError("Cannot open webcam")
+    raise IOError("Cannot open webcam.")
 
 while True:
     ret_val, img = cam.read()
 
     img = cv2.flip(img, 1)
+    img = imutils.resize(img, width=600, height=400)
     rects = detector(img, 1)
     lh.addLandmarksToImage(img, rects, predictor)
-    img = imutils.resize(img, width=256, height=256)
+
     cv2.imshow('Output', img)
 
     if cv2.waitKey(1) == 27: 
-        break  # esc to quit
-    cv2.destroyAllWindows()
+        cv2.destroyAllWindows()
 
 #image = (image/256).astype('uint8')
 #image = imutils.resize(image, width=100, height=100)
-
-
-
 # show the output image with the face detections + facial landmarks
 
 

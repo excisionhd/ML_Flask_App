@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+
 import dlib
 import cv2
 import numpy as np
@@ -14,15 +14,6 @@ def rect_to_bb(rect):
     h = rect.bottom() - y
 
     return (x,y,w,h)
-
-def shape_to_np(shape, dtype="int"):
-    coords = np.zeores((68.2), dtype=dtype)
-
-    for i in range(0,68):
-        coords[i] = (shape.part(i).x, shape.part(i).y)
-
-
-    return coords
 
 def addLandmarksToImage(image, rects, predictor):
 	# loop over the face detections
