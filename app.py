@@ -4,15 +4,15 @@ from flask import Flask, render_template, Response
 import cv2
 import sys
 import numpy
-#import landmarks_helper as lh
-#import dlib
-#from imutils import face_utils
+import landmarks_helper as lh
+import dlib
+import imutils
 
 
 app = Flask(__name__)
 
-#detector = dlib.get_frontal_face_detector()
-#predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
+detector = dlib.get_frontal_face_detector()
+predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 
 @app.route('/')
 def index():
@@ -34,8 +34,9 @@ def get_frame():
     i=1
     while True:
         retval, im = camera.read()
-        #rects = detector(im, 1)
-        #lh.addLandmarksToImage(im, rects, predictor)
+        im = imutils.resize(im, width=400, height=400)
+        rects = detector(im, 1)
+        lh.addLandmarksToImage(im, rects, predictor)
         imgencode=cv2.imencode('.jpg',im)[1]
         stringData=imgencode.tostring()
         yield (b'--frame\r\n'
