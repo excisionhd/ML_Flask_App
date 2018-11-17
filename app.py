@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from flask import Flask, render_template, Response
+from flask import Flask, render_template, Response, url_for
 import cv2
 import sys
 import numpy
@@ -17,6 +17,10 @@ predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/projects/facial_recognition')
+def face():
+    return render_template('face_rec.html')
 
 def gen():
     i=1
