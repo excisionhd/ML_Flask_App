@@ -22,6 +22,10 @@ def index():
 def face():
     return render_template('face_rec.html')
 
+@app.route ('/projects')
+def projects():
+    return "Coming Soon."
+
 def gen():
     i=1
     while i<10:
