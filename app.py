@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 
 from flask import Flask, render_template, Response, url_for
@@ -24,7 +25,7 @@ def face():
 
 @app.route ('/projects')
 def projects():
-    return "Coming Soon."
+    return "Find all available projects here:"
 
 def gen():
     i=1
