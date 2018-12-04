@@ -27,6 +27,10 @@ def face():
 def projects():
     return "Find all available projects here:"
 
+@app.route('/projects/hair_segmentation')
+def hair():
+	return "Hair segmentation project"
+
 def gen():
     i=1
     while i<10:
