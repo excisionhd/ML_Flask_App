@@ -1,6 +1,7 @@
 
 #!/usr/bin/env python3
 
+#Import Dependencies
 from flask import Flask, render_template, Response, url_for
 import cv2
 import sys
@@ -9,9 +10,10 @@ import landmarks_helper as lh
 import dlib
 import imutils
 
-
+#Declare Flask App
 app = Flask(__name__)
 
+#Prepare DLib facial recogition
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 
