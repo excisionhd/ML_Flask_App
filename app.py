@@ -1,7 +1,7 @@
 
 #!/usr/bin/env python3
 
-#Import Dependencies
+#Import Dependencies, flask
 from flask import Flask, render_template, Response, url_for
 import cv2
 import sys
